@@ -32,46 +32,23 @@ class Collections:
     # TODO 自动生成 基于 model目录下文件
     __COLLECTIONS = dict(
 
-        user=dict(
-            coll_name="user",
-            db_name=settings.mongo["database"],
+        link=dict(
+            coll_name="link",
+            db_name="newbie",
             username=settings.mongo["user"],
             password=settings.mongo["password"],
             host=settings.mongo["host"],
             port=settings.mongo["port"],
         ),
-        oauth_clients=dict(
-            coll_name="oauth_clients",
-            db_name=settings.mongo["database"],
+        subject=dict(
+            coll_name="subject",
+            db_name="newbie",
             username=settings.mongo["user"],
             password=settings.mongo["password"],
             host=settings.mongo["host"],
             port=settings.mongo["port"],
         ),
-        search=dict(
-            coll_name="search",
-            db_name=settings.mongo["database"],
-            username=settings.mongo["user"],
-            password=settings.mongo["password"],
-            host=settings.mongo["host"],
-            port=settings.mongo["port"],
-        ),
-        banner=dict(
-            coll_name="banner",
-            db_name=settings.mongo["database"],
-            username=settings.mongo["user"],
-            password=settings.mongo["password"],
-            host=settings.mongo["host"],
-            port=settings.mongo["port"],
-        ),
-        code=dict(
-            coll_name="code",
-            db_name=settings.mongo["database"],
-            username=settings.mongo["user"],
-            password=settings.mongo["password"],
-            host=settings.mongo["host"],
-            port=settings.mongo["port"],
-        ),
+
     )
 
     @classmethod

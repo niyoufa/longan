@@ -155,7 +155,6 @@ class BaseModel(object):
             cr = coll.aggregate([
                 {"$match": query_params},
                 {"$sort": sort_params}])
-
         objs = []
         for obj in cr:
             obj = utils.dump(obj)
