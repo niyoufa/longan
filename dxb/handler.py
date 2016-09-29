@@ -289,6 +289,7 @@ class ListCreateAPIHandler(APIHandler):#method post
     def initialize(self):
         # method get
         self.mg_query_params = {}
+        self.mg_sort_params = {}
 
         super(ListCreateAPIHandler, self).initialize()
 
@@ -309,7 +310,8 @@ class ListCreateAPIHandler(APIHandler):#method post
                         "$lte": str(end_time),
                     }
                 })
-            objs, pager = self.model.search_list(page=page, page_size=page_size, query_params=self.mg_query_params)
+            objs, pager = self.model.search_list(page=page, page_size=page_size, query_params=self.mg_query_params,
+                                                 sort_params=self.mg_sort_params)
             result["data"] = objs
             result["pager"] = pager
         except Exception, e:
