@@ -156,8 +156,8 @@ def get_coll_names(table_name):
 
 # 获取mongodb collection Note: 此处需要做性能分析
 def get_coll(table_name):
-    db_name = Collections.get_db_name(table_name)
     coll_name = Collections.get_coll_name(table_name)
+    db_name = Collections.get_db_name(table_name)
     username = Collections.get_coll_username(table_name)
     password = Collections.get_coll_password(table_name)
     client = get_client(table_name)
@@ -172,6 +172,13 @@ def get_coll(table_name):
         raise Exception(u"集合'%s'不存在,请在mongo.py文件中正确配置！" % table_name)
     return coll
 
+def get_coll_new(name):
+    db_name = name.split(".")[0]
+    coll_name = name.split(".")[1]
+    client = get_client(coll_name)
+    db = client[db_name]
+    coll = db[coll_name]
+    return coll
 
 def get_coll_db_name(table_name):
     db_name = Collections.get_db_name(table_name)

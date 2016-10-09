@@ -37,6 +37,9 @@ class BaseModel(object):
     def get_argument(self,key,default=None):
         return self._arguments.get(key,default)
 
+    def name(self):
+        return self.__name
+
     def coll_name(self):
         return self.__name.split(".")[1]
 
@@ -44,8 +47,8 @@ class BaseModel(object):
         return self.__name.split(".")[0]
 
     def get_coll(self):
-        coll_name = self.coll_name()
-        coll = mongolib.get_coll(coll_name)
+        name = self.name()
+        coll = mongolib.get_coll_new(name)
         return coll
 
     def get_columns(self):
@@ -140,7 +143,6 @@ class BaseModel(object):
     def search_list(self, page=1, page_size=10, query_params={}, sort_params={},pager_flag=True):
         if sort_params == {}:
             sort_params.update({"add_time": -1})
-
         coll = self.get_coll()
         if pager_flag:
             length = coll.find(query_params).count()
